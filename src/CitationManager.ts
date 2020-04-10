@@ -6,7 +6,7 @@ export class CitationManager {
 		this.refList = refList || [];
 	}
 	// Searches for existing citations (based on class), and attempts to replace them from list of citations"
-	public augmentCitations(): void {
+	public augmentCitations(onHover = true): void {
 		const refIDList = this.refList.map((c) => c.refID);
 		const inactiveCites = document.querySelectorAll(".inline-cite:not(.activated)");
 		Array.from(inactiveCites).forEach((citeElem) => {
@@ -15,9 +15,16 @@ export class CitationManager {
 			const refIndex = refIDList.indexOf(refID);
 			if (refIndex !== -1) {
 				const cite = this.refList[refIndex];
+				let eventHandler = `onclick="this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show')"`;
+				if (onHover) {
+					eventHandler = `onmouseover="this.nextSibling.nextElementSibling.classList.add('inline-cite-popup-show')"
+					onmouseout="this.nextSibling.nextElementSibling.classList.remove('inline-cite-popup-show')"`;
+				}
 				citeElem.innerHTML = `
 					<span hidden class="rawRef">${rawRef}</span>
-					<sup onclick="this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show'); setTimeout(() => {this.nextSibling.nextElementSibling.classList.remove('inline-cite-popup-show')}, 20000)">[ref]</sup>
+					<sup ${eventHandler}>
+						[ref]
+					</sup>
 					<div class="inline-cite-popup">
 						${cite.genInlineCite()}
 					</div>
