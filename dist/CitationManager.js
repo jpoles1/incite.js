@@ -17,11 +17,15 @@ var CitationManager = /** @class */ (function () {
             var refIndex = refIDList.indexOf(refID);
             if (refIndex !== -1) {
                 var cite = _this.refList[refIndex];
+                var short = "[ref]";
                 var eventHandler = "onclick=\"this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show')\"";
                 if (onHover) {
                     eventHandler = "onmouseover=\"this.nextSibling.nextElementSibling.classList.add('inline-cite-popup-show')\"\n\t\t\t\t\tonmouseout=\"this.nextSibling.nextElementSibling.classList.remove('inline-cite-popup-show')\"";
+                    if (cite.url) {
+                        short = "<a href=\"" + cite.url + "\" target=\"_blank\">" + short + "</a>";
+                    }
                 }
-                citeElem.innerHTML = "\n\t\t\t\t\t<span hidden class=\"rawRef\">" + rawRef + "</span>\n\t\t\t\t\t<sup " + eventHandler + ">\n\t\t\t\t\t\t[ref]\n\t\t\t\t\t</sup>\n\t\t\t\t\t<div class=\"inline-cite-popup\">\n\t\t\t\t\t\t" + cite.genInlineCite() + "\n\t\t\t\t\t</div>\n\t\t\t\t";
+                citeElem.innerHTML = "\n\t\t\t\t\t<span hidden class=\"rawRef\">" + rawRef + "</span>\n\t\t\t\t\t<sup " + eventHandler + ">\n\t\t\t\t\t\t" + short + "\n\t\t\t\t\t</sup>\n\t\t\t\t\t<div class=\"inline-cite-popup\">\n\t\t\t\t\t\t" + cite.genInlineCite() + "\n\t\t\t\t\t</div>\n\t\t\t\t";
             }
         });
     };

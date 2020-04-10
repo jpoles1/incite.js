@@ -15,15 +15,19 @@ export class CitationManager {
 			const refIndex = refIDList.indexOf(refID);
 			if (refIndex !== -1) {
 				const cite = this.refList[refIndex];
+				let short = `[ref]`;
 				let eventHandler = `onclick="this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show')"`;
 				if (onHover) {
 					eventHandler = `onmouseover="this.nextSibling.nextElementSibling.classList.add('inline-cite-popup-show')"
 					onmouseout="this.nextSibling.nextElementSibling.classList.remove('inline-cite-popup-show')"`;
+					if (cite.url) {
+						short = `<a href="${cite.url}" target="_blank">${short}</a>`;
+					}
 				}
 				citeElem.innerHTML = `
 					<span hidden class="rawRef">${rawRef}</span>
 					<sup ${eventHandler}>
-						[ref]
+						${short}
 					</sup>
 					<div class="inline-cite-popup">
 						${cite.genInlineCite()}
