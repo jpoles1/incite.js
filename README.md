@@ -1,5 +1,7 @@
 # inline-cite.js
-Simple javascript lib for reference management and inline citation into HTML webpages
+Simple javascript lib for reference management and inline citation into HTML webpages.
+
+![Inline Citation Demo](https://github.com/jpoles1/inline-cite.js/raw/master/inline-cite.gif)
 
 ## Getting Started
 
