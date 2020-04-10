@@ -17,8 +17,8 @@ export class CitationManager {
 				const cite = this.refList[refIndex];
 				citeElem.innerHTML = `
 					<span hidden class="rawRef">${rawRef}</span>
-					<sup onclick="this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show'); setTimeout(() => {this.nextSibling.nextElementSibling.classList.remove('inline-cite-popup-show')}, 10000)">[ref]</sup>
-					<div class="inline-cite-popup" style="background-color: #555; min-width: 180px; max-width: 240px; max-height: 180px; font-size: 50%; position: absolute; top: 20px; left: 20px; padding: 8px;">
+					<sup onclick="this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show'); setTimeout(() => {this.nextSibling.nextElementSibling.classList.remove('inline-cite-popup-show')}, 20000)">[ref]</sup>
+					<div class="inline-cite-popup">
 						${cite.genInlineCite()}
 					</div>
 				`;
