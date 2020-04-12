@@ -15,7 +15,7 @@ export class CitationManager {
 			const refIndex = refIDList.indexOf(refID);
 			if (refIndex !== -1) {
 				const cite = this.refList[refIndex];
-				let short = `[ref]`;
+				let short = `[${refIndex + 1}]`;
 				let eventHandler = `onclick="this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show')"`;
 				if (onHover) {
 					eventHandler = `onmouseover="this.nextSibling.nextElementSibling.classList.add('inline-cite-popup-show')"
