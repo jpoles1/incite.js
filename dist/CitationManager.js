@@ -17,7 +17,7 @@ var CitationManager = /** @class */ (function () {
             var refIndex = refIDList.indexOf(refID);
             if (refIndex !== -1) {
                 var cite = _this.refList[refIndex];
-                var short = "[ref]";
+                var short = "[" + (refIndex + 1) + "]";
                 var eventHandler = "onclick=\"this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show')\"";
                 if (onHover) {
                     eventHandler = "onmouseover=\"this.nextSibling.nextElementSibling.classList.add('inline-cite-popup-show')\"\n\t\t\t\t\tonmouseout=\"this.nextSibling.nextElementSibling.classList.remove('inline-cite-popup-show')\"";
