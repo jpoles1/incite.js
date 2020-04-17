@@ -1,7 +1,7 @@
-# inline-cite.js
+# incite.js
 Simple javascript lib for reference management and inline citation into HTML webpages.
 
-![Inline Citation Demo](https://github.com/jpoles1/inline-cite.js/raw/master/inline-cite.gif)
+![Inline Citation Demo](https://github.com/jpoles1/incite.js/raw/master/incite.gif)
 
 ## Getting Started
 
@@ -16,8 +16,8 @@ All you need to do is:
 1) Import the library:
 
 ```
-import { CitationManager } from "./inline-cite.js/src/CitationManager";
-import { Citation } from "./inline-cite.js/src/Citation";
+import { CitationManager } from "./incite.js/src/CitationManager";
+import { Citation } from "./incite.js/src/Citation";
 ```
 
 2) Create Reference List:
@@ -37,7 +37,7 @@ refMan = new CitationManager([
 		url: "https://www.sciencedirect.com/science/article/pii/S0196064405822929",
 	}),
 ]);
-#This function searches for .inline-cite and modifies the DOM to include the citations
+#This function searches for .incite and modifies the DOM to include the citations
 refMan.augmentCitations();
 
 ```
@@ -46,8 +46,8 @@ refMan.augmentCitations();
 
 ```
 <div>
-		Lorem ipsum dolor sit amet <div class="inline-cite">[Wrenn 1990]</div>, consectetur adipiscing elit. 
-		Etiam viverra ipsum ut mi facilisis vehicula vitae et ligula.<div class="inline-cite">[Hamm 2015|Narins 1980]</div> 
+		Lorem ipsum dolor sit amet <div class="incite">[Wrenn 1990]</div>, consectetur adipiscing elit. 
+		Etiam viverra ipsum ut mi facilisis vehicula vitae et ligula.<div class="incite">[Hamm 2015|Narins 1980]</div> 
 		Nullam sagittis, velit congue posuere tincidunt, arcu tortor rutrum dolor, ut vulputate tortor risus id purus. 
 <div>
 ```
@@ -56,11 +56,11 @@ refMan.augmentCitations();
 4) You can start off by modifying the following styles to fit your UI:
 
 ```
-.inline-cite {
+.incite {
 	position: relative;
 	display: inline;
 }
-.inline-cite-popup {
+.incite-popup {
 	background-color: #555; 
 	border-radius: 3px;
 	min-width: 180px; 
@@ -73,15 +73,15 @@ refMan.augmentCitations();
 	padding: 8px;
 	box-shadow: #222 3px 3px 3px;
 }
-.inline-cite-popup:not(.inline-cite-popup-show) {
+.incite-popup:not(.incite-popup-show) {
 	display: none;
 }
-.inline-cite a{
+.incite a{
 	color: white;
 	text-decoration: none;
 	transition: 600ms;
 }
-.inline-cite a:hover{
+.incite a:hover{
 	/*color: #e7ea78;*/
 	color: #f6aeae;
 	text-decoration: underline;

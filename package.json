@@ -1,8 +1,8 @@
 {
-  "name": "inline-cite.js",
+  "name": "incite.js",
   "version": "1.0.0",
-  "main": "inline-cite.ts",
-  "repository": "git@github.com:jpoles1/inline-cite.js.git",
+  "main": "incite.ts",
+  "repository": "git@github.com:jpoles1/incite.js.git",
   "author": "Jordan Poles <jpdev.noreply@gmail.com>",
   "license": "MIT",
   "scripts": {
