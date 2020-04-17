@@ -47,11 +47,11 @@ refMan.augmentCitations();
 ```
 <div>
 		Lorem ipsum dolor sit amet <div class="inline-cite">[Wrenn 1990]</div>, consectetur adipiscing elit. 
-		Etiam viverra ipsum ut mi facilisis vehicula vitae et ligula. 
+		Etiam viverra ipsum ut mi facilisis vehicula vitae et ligula.<div class="inline-cite">[Hamm 2015|Narins 1980]</div> 
 		Nullam sagittis, velit congue posuere tincidunt, arcu tortor rutrum dolor, ut vulputate tortor risus id purus. 
 <div>
 ```
-
+<i>Note: separate multiple citations with the "|" character.</i>
 
 4) You can start off by modifying the following styles to fit your UI:
 
@@ -68,11 +68,11 @@ refMan.augmentCitations();
 	max-height: 180px; 
 	font-size: 50%; 
 	position: absolute; 
-	top: 20px; 
-	left: 20px; 
+	bottom:	20px; 
+	left: -240px; 
 	padding: 8px;
 	box-shadow: #222 3px 3px 3px;
-	}
+}
 .inline-cite-popup:not(.inline-cite-popup-show) {
 	display: none;
 }

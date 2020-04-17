@@ -11,29 +11,39 @@ export class CitationManager {
 		const inactiveCites = document.querySelectorAll(".inline-cite:not(.activated)");
 		Array.from(inactiveCites).forEach((citeElem) => {
 			const rawRef = citeElem.innerHTML;
-			const refID = rawRef.replace(/[\[\]]/g, "");
-			const refIndex = refIDList.indexOf(refID);
-			if (refIndex !== -1) {
-				const cite = this.refList[refIndex];
-				let short = `[${refIndex + 1}]`;
-				let eventHandler = `onclick="this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show')"`;
-				if (onHover) {
-					eventHandler = `onmouseover="this.nextSibling.nextElementSibling.classList.add('inline-cite-popup-show')"
-					onmouseout="this.nextSibling.nextElementSibling.classList.remove('inline-cite-popup-show')"`;
+			const refList = rawRef.replace(/[\[\]]/g, "").split("|");
+			const shortList: string[] = [];
+			const citeNameList: string[] = [];
+			refList.forEach((refID: string) => {
+				const refIndex = refIDList.indexOf(refID);
+				if (refIndex !== -1) {
+					const cite = this.refList[refIndex];
+					let short = `${refIndex + 1}`;
+					let citeName = cite.name;
 					if (cite.url) {
-						short = `<a href="${cite.url}" target="_blank">${short}</a>`;
+						citeName = `<a href="${cite.url}" target="_blank">${cite.name}</a>`;
+						if (onHover) {
+							short = `<a href="${cite.url}" target="_blank">${short}</a>`;
+						}
 					}
+					shortList.push(short);
+					citeNameList.push(`${refIndex + 1}) ${citeName}`);
 				}
-				citeElem.innerHTML = `
+			});
+			let eventHandler = `onclick="this.nextSibling.nextElementSibling.classList.toggle('inline-cite-popup-show')"`;
+			if (onHover) {
+				eventHandler = `onmouseover="this.nextSibling.nextElementSibling.classList.add('inline-cite-popup-show')"
+				onmouseout="this.nextSibling.nextElementSibling.classList.remove('inline-cite-popup-show')"`;
+			}
+			citeElem.innerHTML = `
 					<span hidden class="rawRef">${rawRef}</span>
 					<sup ${eventHandler}>
-						${short}
+						[${shortList.join(", ")}]
 					</sup>
 					<div class="inline-cite-popup">
-						${cite.genInlineCite()}
+						${citeNameList.join("<hr>")}
 					</div>
 				`;
-			}
 		});
 	}
 }
